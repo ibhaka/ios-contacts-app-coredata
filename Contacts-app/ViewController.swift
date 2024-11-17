@@ -6,19 +6,26 @@
 //
 
 import UIKit
+import CoreData
+
+
+let appDelegate = UIApplication.shared.delegate as! AppDelegate
+
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var searchBar: UISearchBar!
+    let context = appDelegate.persistentContainer.viewContext
     
+    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var contactTableView: UITableView!
     
-    var list = [String]()
+    
+    var contactList = [Contacts]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        list = ["Jack", "Paul", "Lars", "Kirk", "Steve"];
+//        contactList = ["Jack", "Paul", "Lars", "Kirk", "Steve"];
 
         contactTableView.delegate = self
         contactTableView.dataSource = self
@@ -35,6 +42,16 @@ class ViewController: UIViewController {
         if segue.identifier == "toUpdate"{
             
         }
+        
+        func getAllContact(){
+            do{
+                contactList = try context.fetch(Contacts.fetchRequest())
+            }
+            catch{
+                print(error)
+            }
+            
+        }
 
 
     }
@@ -48,12 +65,15 @@ extension ViewController:UITableViewDelegate,UITableViewDataSource{
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return list.count
+        return contactList.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let person = contactList[indexPath.row]
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "contactCell", for: indexPath) as! ContactCellTableViewCell
         
-        cell.personTextLabel.text = list[indexPath.row]
+        cell.personTextLabel.text = "\(person.name!) - \(person.number!)"
         
         return cell
     }
@@ -94,14 +114,14 @@ extension ViewController:UITableViewDelegate,UITableViewDataSource{
         let deleteAction = UIContextualAction(style: .destructive, title: "delete") {
             (contextialAction, view, boolValue) in
             
-            print("Delete clicked for \(self.list[indexPath.row])")
+//            print("Delete clicked for \(self.contactList[indexPath.row])")
 
         }
         
         let updateAction = UIContextualAction(style: .normal, title: "update") {
             (contextialAction, view, boolValue) in
             
-            print("Delete clicked for \(self.list[indexPath.row])")
+//            print("Delete clicked for \(self.contactList[indexPath.row])")
             self.performSegue(withIdentifier: "toUpdate", sender: indexPath.row)
 
 

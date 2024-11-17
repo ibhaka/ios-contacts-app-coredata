@@ -20,6 +20,7 @@
 		60C8F6272CE7DCF20055E646 /* AddContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C8F6262CE7DCF20055E646 /* AddContactViewController.swift */; };
 		60C8F6292CE8B7900055E646 /* UpdateContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C8F6282CE8B7900055E646 /* UpdateContactViewController.swift */; };
 		60C8F62B2CE8B7B30055E646 /* PersonDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C8F62A2CE8B7B30055E646 /* PersonDetailViewController.swift */; };
+		60FCE78E2CEA3C9E0010D4C7 /* Contacts-app.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 60FCE78C2CEA3C9E0010D4C7 /* Contacts-app.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		60C8F6262CE7DCF20055E646 /* AddContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContactViewController.swift; sourceTree = "<group>"; };
 		60C8F6282CE8B7900055E646 /* UpdateContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateContactViewController.swift; sourceTree = "<group>"; };
 		60C8F62A2CE8B7B30055E646 /* PersonDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailViewController.swift; sourceTree = "<group>"; };
+		60FCE78D2CEA3C9E0010D4C7 /* Contacts-app.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Contacts-app.xcdatamodel"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,7 @@
 				60C8F6262CE7DCF20055E646 /* AddContactViewController.swift */,
 				60C8F6282CE8B7900055E646 /* UpdateContactViewController.swift */,
 				60C8F62A2CE8B7B30055E646 /* PersonDetailViewController.swift */,
+				60FCE78C2CEA3C9E0010D4C7 /* Contacts-app.xcdatamodeld */,
 			);
 			path = "Contacts-app";
 			sourceTree = "<group>";
@@ -276,6 +279,7 @@
 				602118492CE776940026BED6 /* AppDelegate.swift in Sources */,
 				60C8F6292CE8B7900055E646 /* UpdateContactViewController.swift in Sources */,
 				60C8F62B2CE8B7B30055E646 /* PersonDetailViewController.swift in Sources */,
+				60FCE78E2CEA3C9E0010D4C7 /* Contacts-app.xcdatamodeld in Sources */,
 				6021184B2CE776940026BED6 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -617,6 +621,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		60FCE78C2CEA3C9E0010D4C7 /* Contacts-app.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				60FCE78D2CEA3C9E0010D4C7 /* Contacts-app.xcdatamodel */,
+			);
+			currentVersion = 60FCE78D2CEA3C9E0010D4C7 /* Contacts-app.xcdatamodel */;
+			name = "Contacts-app.xcdatamodeld";
+			path = "/Users/ibrahimhalilkalkan/Desktop/iOS/github ios repo projects/Contacts-app-Coredata/Contacts-app/Contacts-app.xcdatamodeld";
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 6021183D2CE776940026BED6 /* Project object */;
 }

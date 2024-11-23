@@ -31,7 +31,13 @@ class ViewController: UIViewController {
         contactTableView.dataSource = self
         
         searchBar.delegate = self
+        
 
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        getAllContact()
+        
+        contactTableView.reloadData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -43,17 +49,17 @@ class ViewController: UIViewController {
             
         }
         
-        func getAllContact(){
-            do{
-                contactList = try context.fetch(Contacts.fetchRequest())
-            }
-            catch{
-                print(error)
-            }
-            
+        
+
+    }
+    func getAllContact(){
+        do{
+            contactList = try context.fetch(Contacts.fetchRequest())
         }
-
-
+        catch{
+            print(error)
+        }
+        
     }
 
 

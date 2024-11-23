@@ -30,6 +30,7 @@ class AddContactViewController: UIViewController {
             person.name = name
             person.number = number
             
+            appDelegate.saveContext()
         }
     }
     

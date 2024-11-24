@@ -121,6 +121,15 @@ extension ViewController:UITableViewDelegate,UITableViewDataSource{
             (contextialAction, view, boolValue) in
             
 //            print("Delete clicked for \(self.contactList[indexPath.row])")
+            let contact = self.contactList[indexPath.row]
+            
+            self.context.delete(contact)
+            
+            appDelegate.saveContext()
+            
+            self.getAllContact()
+            
+            self.contactTableView.reloadData()
 
         }
         

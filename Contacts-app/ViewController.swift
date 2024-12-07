@@ -41,11 +41,18 @@ class ViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let index = sender as? Int
         
         if segue.identifier == "toDetail"{
             
+            let detailVC = segue.destination as! PersonDetailViewController
+            detailVC.contact = contactList[index!]
+            
         }
         if segue.identifier == "toUpdate"{
+            
+            let updateVC = segue.destination as! UpdateContactViewController
+            updateVC.contact = contactList[index!]
             
         }
         
@@ -114,7 +121,7 @@ extension ViewController:UITableViewDelegate,UITableViewDataSource{
         
     }
     */
-    
+        
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
         let deleteAction = UIContextualAction(style: .destructive, title: "delete") {

@@ -13,6 +13,8 @@ class AddContactViewController: UIViewController {
     
     @IBOutlet weak var personNameTextfield: UITextField!
     @IBOutlet weak var phoneNoTextfield: UITextField!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -25,12 +27,11 @@ class AddContactViewController: UIViewController {
             
             let person = Contacts(context: context)
             
-            
-                
             person.name = name
             person.number = number
             
             appDelegate.saveContext()
+            
         }
     }
     

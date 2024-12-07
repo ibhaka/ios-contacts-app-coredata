@@ -11,21 +11,21 @@ class PersonDetailViewController: UIViewController {
 
     @IBOutlet weak var personNameLabel: UILabel!
     @IBOutlet weak var personNoLabel: UILabel!
+    
+    var contact:Contacts?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        if let c = contact {
+            personNoLabel.text = c.number
+            personNameLabel.text = c.name
+            
+        }
+
+
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+  
 
 }

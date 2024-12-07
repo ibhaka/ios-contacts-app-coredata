@@ -158,7 +158,36 @@ extension ViewController:UISearchBarDelegate{
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         print("Search: \(searchText)")
+        
+        search(name: searchText)
+        
+        if searchText == ""{
+            getAllContact()
+            
+        }
+        else{
+            search(name: searchText)
+            
+        }
+        contactTableView.reloadData()
+
     }
     
+    
+    func search(name:String){
+        
+        let fetchRequest:NSFetchRequest<Contacts> = Contacts.fetchRequest()
+        
+        let predicate = NSPredicate(format: "name CONTAINS[c] %@", searchBar.text!)
+        fetchRequest.predicate = predicate
+        
+        do{
+            contactList = try context.fetch(fetchRequest)
+        }
+        catch{
+            print(error)
+        }
+        
+    }
 }
 

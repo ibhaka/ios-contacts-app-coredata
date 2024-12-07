@@ -21,6 +21,9 @@ class ViewController: UIViewController {
     
     
     var contactList = [Contacts]()
+    var searchWord: String?
+    
+    var isSearchActive = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +38,14 @@ class ViewController: UIViewController {
 
     }
     override func viewWillAppear(_ animated: Bool) {
-        getAllContact()
+        
+        if isSearchActive{
+            search(name: searchWord!)
+        }
+        else{
+            getAllContact()
+
+        }
         
         contactTableView.reloadData()
     }
@@ -134,8 +144,13 @@ extension ViewController:UITableViewDelegate,UITableViewDataSource{
             
             appDelegate.saveContext()
             
-            self.getAllContact()
-            
+            if self.isSearchActive{
+                self.search(name: self.searchWord!)
+            }
+            else{
+                self.getAllContact()
+
+            }
             self.contactTableView.reloadData()
 
         }
@@ -158,7 +173,39 @@ extension ViewController:UISearchBarDelegate{
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         print("Search: \(searchText)")
+        
+        searchWord = searchText
+
+        
+        if searchText == ""{
+            isSearchActive = false
+            getAllContact()
+            
+        }
+        else{
+            isSearchActive = true
+            search(name: searchWord!)
+            
+        }
+        contactTableView.reloadData()
+
     }
     
+    
+    func search(name:String){
+        
+        let fetchRequest:NSFetchRequest<Contacts> = Contacts.fetchRequest()
+        
+        let predicate = NSPredicate(format: "name CONTAINS[c] %@", searchBar.text!)
+        fetchRequest.predicate = predicate
+        
+        do{
+            contactList = try context.fetch(fetchRequest)
+        }
+        catch{
+            print(error)
+        }
+        
+    }
 }
 
